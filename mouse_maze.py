@@ -112,9 +112,9 @@ def simple_convert_into_pi_from_theta(theta):
         pi[i, :] = theta[i, :] / np.nansum(theta[i, :])  # 비율 계산
         # nansum: nan 제외하고 합산
 
-    pi = np.nan_to_num(pi)  # nan을 0으로 변환
+    pi = np.nan_to_num(pi)
+    print(pi)  # nan을 0으로 변환
     return pi
-
 # 예시 행렬 theta_0을 생성하고 함수를 사용
 #theta_0 = np.array([[np.nan, 1, 1], [3, np.nan, 1], [1, 2, np.nan]])
 pi_0 = simple_convert_into_pi_from_theta(theta_0) # 정책 파라미터 theta를 행동 정책 pi로 변환하는 함수 nan값이 0으로 채워지고 비율이 계산된 최좀 pi.
@@ -156,7 +156,7 @@ state_history = goal_maze(pi_0)
 print(state_history)
 
 #목표지점까지 걸린 단계 수를 출력 / 처음은 시작지점이기 때문에 -1을 해주었음
-print("The number of steps it took to reach the goal is " + str(len(state_history) - 1) + "steps")
+print("목표 지점에 이르기까지 걸린 단계 수는 " + str(len(state_history) - 1) + "단계입니다")
 
 def init():
     '''배경 이미지 초기화'''
@@ -167,7 +167,7 @@ def animate(i):
     '''프레임 단위로 이미지 생성'''
     state = state_history[i]  # 현재 위치
     x = (state % 5) + 0.5  # x좌표 : (state % 3) 계산 결과 0, 1, 2
-    y = 2.5 - int(state / 5)  # y좌표 : (state / 3) 계산 결과 0, 1, 2
+    y = 4.5 - int(state / 5)  # y좌표 : (state / 3) 계산 결과 0, 1, 2
     line.set_data(x, y)
     return (line,)
 
