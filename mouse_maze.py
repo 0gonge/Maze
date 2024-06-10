@@ -166,8 +166,8 @@ def init():
 def animate(i):
     '''프레임 단위로 이미지 생성'''
     state = state_history[i]  # 현재 위치
-    x = (state % 5) + 0.5  # x좌표 : (state % 3) 계산 결과 0, 1, 2
-    y = 4.5 - int(state / 5)  # y좌표 : (state / 3) 계산 결과 0, 1, 2
+    x = (state % 5) + 0.5  # x좌표 : (state % 5) 중심에 위치시켜야 하니까 0.5 (0,1,2,3,4)위치
+    y = 4.5 - int(state / 5)  # y좌표 : 4.5 - (state / 5) 위쪽을 0으로 해줘야 하기 때문에 4.5에서 빼주었다.
     line.set_data(x, y)
     return (line,)
 
